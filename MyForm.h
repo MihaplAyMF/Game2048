@@ -15,13 +15,7 @@ namespace Game2048 {
 	public ref class MyForm : public System::Windows::Forms::Form
 	{
 	public:
-		MyForm(void)
-		{
-			InitializeComponent();
-			//
-			//TODO: добавьте код конструктора
-			//
-		}
+		MyForm(void);
 
 	protected:
 		/// <summary>
@@ -34,7 +28,7 @@ namespace Game2048 {
 				delete components;
 			}
 		}
-	private: System::Windows::Forms::PictureBox^ pictureBox1;
+
 	protected:
 	private: System::Windows::Forms::PictureBox^ pictureBox2;
 	private: System::Windows::Forms::PictureBox^ pictureBox3;
@@ -52,12 +46,18 @@ namespace Game2048 {
 	private: System::Windows::Forms::PictureBox^ pictureBox15;
 	private: System::Windows::Forms::PictureBox^ pictureBox16;
 	private: System::Windows::Forms::Label^ label1;
+	private: System::Windows::Forms::PictureBox^ pictureBox1;
+	private: System::Windows::Forms::Timer^ timer;
+
+	private: System::Windows::Forms::Label^ label2;
+	private: System::ComponentModel::IContainer^ components;
+
 
 	private:
 		/// <summary>
 		/// Обязательная переменная конструктора.
 		/// </summary>
-		System::ComponentModel::Container ^components;
+
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
@@ -66,7 +66,7 @@ namespace Game2048 {
 		/// </summary>
 		void InitializeComponent(void)
 		{
-			this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
+			this->components = (gcnew System::ComponentModel::Container());
 			this->pictureBox2 = (gcnew System::Windows::Forms::PictureBox());
 			this->pictureBox3 = (gcnew System::Windows::Forms::PictureBox());
 			this->pictureBox4 = (gcnew System::Windows::Forms::PictureBox());
@@ -83,7 +83,9 @@ namespace Game2048 {
 			this->pictureBox15 = (gcnew System::Windows::Forms::PictureBox());
 			this->pictureBox16 = (gcnew System::Windows::Forms::PictureBox());
 			this->label1 = (gcnew System::Windows::Forms::Label());
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
+			this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
+			this->timer = (gcnew System::Windows::Forms::Timer(this->components));
+			this->label2 = (gcnew System::Windows::Forms::Label());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox2))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox3))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox4))->BeginInit();
@@ -99,16 +101,8 @@ namespace Game2048 {
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox14))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox15))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox16))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
 			this->SuspendLayout();
-			// 
-			// pictureBox1
-			// 
-			this->pictureBox1->BackColor = System::Drawing::SystemColors::AppWorkspace;
-			this->pictureBox1->Location = System::Drawing::Point(17, 90);
-			this->pictureBox1->Name = L"pictureBox1";
-			this->pictureBox1->Size = System::Drawing::Size(60, 60);
-			this->pictureBox1->TabIndex = 0;
-			this->pictureBox1->TabStop = false;
 			// 
 			// pictureBox2
 			// 
@@ -255,11 +249,36 @@ namespace Game2048 {
 			this->label1->TabIndex = 16;
 			this->label1->Text = L"Кількість очок: ";
 			// 
+			// pictureBox1
+			// 
+			this->pictureBox1->BackColor = System::Drawing::SystemColors::AppWorkspace;
+			this->pictureBox1->Location = System::Drawing::Point(17, 90);
+			this->pictureBox1->Name = L"pictureBox1";
+			this->pictureBox1->Size = System::Drawing::Size(60, 60);
+			this->pictureBox1->TabIndex = 0;
+			this->pictureBox1->TabStop = false;
+			// 
+			// timer
+			// 
+			this->timer->Enabled = true;
+			this->timer->Tick += gcnew System::EventHandler(this, &MyForm::Game_Update);
+			// 
+			// label2
+			// 
+			this->label2->AutoSize = true;
+			this->label2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15));
+			this->label2->Location = System::Drawing::Point(173, 31);
+			this->label2->Name = L"label2";
+			this->label2->Size = System::Drawing::Size(23, 25);
+			this->label2->TabIndex = 17;
+			this->label2->Text = L"0";
+			// 
 			// MyForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(292, 363);
+			this->Controls->Add(this->label2);
 			this->Controls->Add(this->label1);
 			this->Controls->Add(this->pictureBox16);
 			this->Controls->Add(this->pictureBox15);
@@ -279,7 +298,7 @@ namespace Game2048 {
 			this->Controls->Add(this->pictureBox1);
 			this->Name = L"MyForm";
 			this->Text = L"Game2048";
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->EndInit();
+			this->KeyDown += gcnew System::Windows::Forms::KeyEventHandler(this, &MyForm::MyForm_KeyDown);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox2))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox3))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox4))->EndInit();
@@ -295,10 +314,17 @@ namespace Game2048 {
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox14))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox15))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox16))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->EndInit();
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
 		}
 #pragma endregion
-	};
+
+
+	private: System::Void MyForm_KeyDown(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e);
+
+	private: void Game_Update(Object^ sender, EventArgs^ e);
+	
+};
 }
