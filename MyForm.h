@@ -1,4 +1,11 @@
-#pragma once
+п»ї#pragma once
+
+#include <iostream>
+#define SIZE 4
+
+int randint(int start, int end) {
+	return rand() % end + start;
+}
 
 namespace Game2048 {
 
@@ -10,7 +17,7 @@ namespace Game2048 {
 	using namespace System::Drawing;
 
 	/// <summary>
-	/// Сводка для MyForm
+	/// РЎРІРѕРґРєР° РґР»СЏ MyForm
 	/// </summary>
 	public ref class MyForm : public System::Windows::Forms::Form
 	{
@@ -19,7 +26,7 @@ namespace Game2048 {
 
 	protected:
 		/// <summary>
-		/// Освободить все используемые ресурсы.
+		/// РћСЃРІРѕР±РѕРґРёС‚СЊ РІСЃРµ РёСЃРїРѕР»СЊР·СѓРµРјС‹Рµ СЂРµСЃСѓСЂСЃС‹.
 		/// </summary>
 		~MyForm()
 		{
@@ -50,19 +57,35 @@ namespace Game2048 {
 	private: System::Windows::Forms::Timer^ timer;
 
 	private: System::Windows::Forms::Label^ label2;
+	private: System::Windows::Forms::Label^ label3;
+	private: System::Windows::Forms::Label^ label4;
+	private: System::Windows::Forms::Label^ label5;
+	private: System::Windows::Forms::Label^ label6;
+	private: System::Windows::Forms::Label^ label7;
+	private: System::Windows::Forms::Label^ label8;
+	private: System::Windows::Forms::Label^ label9;
+	private: System::Windows::Forms::Label^ label10;
+	private: System::Windows::Forms::Label^ label11;
+	private: System::Windows::Forms::Label^ label12;
+	private: System::Windows::Forms::Label^ label13;
+	private: System::Windows::Forms::Label^ label14;
+	private: System::Windows::Forms::Label^ label15;
+	private: System::Windows::Forms::Label^ label16;
+	private: System::Windows::Forms::Label^ label17;
+	private: System::Windows::Forms::Label^ label18;
 	private: System::ComponentModel::IContainer^ components;
 
 
 	private:
 		/// <summary>
-		/// Обязательная переменная конструктора.
+		/// РћР±СЏР·Р°С‚РµР»СЊРЅР°СЏ РїРµСЂРµРјРµРЅРЅР°СЏ РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂР°.
 		/// </summary>
 
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
-		/// Требуемый метод для поддержки конструктора — не изменяйте 
-		/// содержимое этого метода с помощью редактора кода.
+		/// РўСЂРµР±СѓРµРјС‹Р№ РјРµС‚РѕРґ РґР»СЏ РїРѕРґРґРµСЂР¶РєРё РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂР° вЂ” РЅРµ РёР·РјРµРЅСЏР№С‚Рµ 
+		/// СЃРѕРґРµСЂР¶РёРјРѕРµ СЌС‚РѕРіРѕ РјРµС‚РѕРґР° СЃ РїРѕРјРѕС‰СЊСЋ СЂРµРґР°РєС‚РѕСЂР° РєРѕРґР°.
 		/// </summary>
 		void InitializeComponent(void)
 		{
@@ -86,6 +109,22 @@ namespace Game2048 {
 			this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
 			this->timer = (gcnew System::Windows::Forms::Timer(this->components));
 			this->label2 = (gcnew System::Windows::Forms::Label());
+			this->label3 = (gcnew System::Windows::Forms::Label());
+			this->label4 = (gcnew System::Windows::Forms::Label());
+			this->label5 = (gcnew System::Windows::Forms::Label());
+			this->label6 = (gcnew System::Windows::Forms::Label());
+			this->label7 = (gcnew System::Windows::Forms::Label());
+			this->label8 = (gcnew System::Windows::Forms::Label());
+			this->label9 = (gcnew System::Windows::Forms::Label());
+			this->label10 = (gcnew System::Windows::Forms::Label());
+			this->label11 = (gcnew System::Windows::Forms::Label());
+			this->label12 = (gcnew System::Windows::Forms::Label());
+			this->label13 = (gcnew System::Windows::Forms::Label());
+			this->label14 = (gcnew System::Windows::Forms::Label());
+			this->label15 = (gcnew System::Windows::Forms::Label());
+			this->label16 = (gcnew System::Windows::Forms::Label());
+			this->label17 = (gcnew System::Windows::Forms::Label());
+			this->label18 = (gcnew System::Windows::Forms::Label());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox2))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox3))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox4))->BeginInit();
@@ -247,7 +286,7 @@ namespace Game2048 {
 			this->label1->Name = L"label1";
 			this->label1->Size = System::Drawing::Size(155, 25);
 			this->label1->TabIndex = 16;
-			this->label1->Text = L"Кількість очок: ";
+			this->label1->Text = L"РљС–Р»СЊРєС–СЃС‚СЊ РѕС‡РѕРє: ";
 			// 
 			// pictureBox1
 			// 
@@ -273,11 +312,187 @@ namespace Game2048 {
 			this->label2->TabIndex = 17;
 			this->label2->Text = L"0";
 			// 
+			// label3
+			// 
+			this->label3->AutoSize = true;
+			this->label3->BackColor = System::Drawing::SystemColors::AppWorkspace;
+			this->label3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14));
+			this->label3->Location = System::Drawing::Point(32, 109);
+			this->label3->Name = L"label3";
+			this->label3->Size = System::Drawing::Size(0, 24);
+			this->label3->TabIndex = 18;
+			// 
+			// label4
+			// 
+			this->label4->AutoSize = true;
+			this->label4->BackColor = System::Drawing::SystemColors::AppWorkspace;
+			this->label4->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14));
+			this->label4->Location = System::Drawing::Point(103, 109);
+			this->label4->Name = L"label4";
+			this->label4->Size = System::Drawing::Size(0, 24);
+			this->label4->TabIndex = 19;
+			// 
+			// label5
+			// 
+			this->label5->AutoSize = true;
+			this->label5->BackColor = System::Drawing::SystemColors::AppWorkspace;
+			this->label5->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14));
+			this->label5->Location = System::Drawing::Point(174, 109);
+			this->label5->Name = L"label5";
+			this->label5->Size = System::Drawing::Size(0, 24);
+			this->label5->TabIndex = 20;
+			// 
+			// label6
+			// 
+			this->label6->AutoSize = true;
+			this->label6->BackColor = System::Drawing::SystemColors::AppWorkspace;
+			this->label6->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14));
+			this->label6->Location = System::Drawing::Point(237, 109);
+			this->label6->Name = L"label6";
+			this->label6->Size = System::Drawing::Size(0, 24);
+			this->label6->TabIndex = 21;
+			// 
+			// label7
+			// 
+			this->label7->AutoSize = true;
+			this->label7->BackColor = System::Drawing::SystemColors::AppWorkspace;
+			this->label7->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14));
+			this->label7->Location = System::Drawing::Point(32, 175);
+			this->label7->Name = L"label7";
+			this->label7->Size = System::Drawing::Size(0, 24);
+			this->label7->TabIndex = 22;
+			// 
+			// label8
+			// 
+			this->label8->AutoSize = true;
+			this->label8->BackColor = System::Drawing::SystemColors::AppWorkspace;
+			this->label8->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14));
+			this->label8->Location = System::Drawing::Point(103, 175);
+			this->label8->Name = L"label8";
+			this->label8->Size = System::Drawing::Size(0, 24);
+			this->label8->TabIndex = 23;
+			// 
+			// label9
+			// 
+			this->label9->AutoSize = true;
+			this->label9->BackColor = System::Drawing::SystemColors::AppWorkspace;
+			this->label9->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14));
+			this->label9->Location = System::Drawing::Point(174, 175);
+			this->label9->Name = L"label9";
+			this->label9->Size = System::Drawing::Size(0, 24);
+			this->label9->TabIndex = 24;
+			// 
+			// label10
+			// 
+			this->label10->AutoSize = true;
+			this->label10->BackColor = System::Drawing::SystemColors::AppWorkspace;
+			this->label10->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14));
+			this->label10->Location = System::Drawing::Point(237, 175);
+			this->label10->Name = L"label10";
+			this->label10->Size = System::Drawing::Size(0, 24);
+			this->label10->TabIndex = 25;
+			// 
+			// label11
+			// 
+			this->label11->AutoSize = true;
+			this->label11->BackColor = System::Drawing::SystemColors::AppWorkspace;
+			this->label11->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14));
+			this->label11->Location = System::Drawing::Point(32, 237);
+			this->label11->Name = L"label11";
+			this->label11->Size = System::Drawing::Size(0, 24);
+			this->label11->TabIndex = 26;
+			// 
+			// label12
+			// 
+			this->label12->AutoSize = true;
+			this->label12->BackColor = System::Drawing::SystemColors::AppWorkspace;
+			this->label12->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14));
+			this->label12->Location = System::Drawing::Point(103, 237);
+			this->label12->Name = L"label12";
+			this->label12->Size = System::Drawing::Size(0, 24);
+			this->label12->TabIndex = 27;
+			// 
+			// label13
+			// 
+			this->label13->AutoSize = true;
+			this->label13->BackColor = System::Drawing::SystemColors::AppWorkspace;
+			this->label13->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14));
+			this->label13->Location = System::Drawing::Point(174, 237);
+			this->label13->Name = L"label13";
+			this->label13->Size = System::Drawing::Size(0, 24);
+			this->label13->TabIndex = 28;
+			// 
+			// label14
+			// 
+			this->label14->AutoSize = true;
+			this->label14->BackColor = System::Drawing::SystemColors::AppWorkspace;
+			this->label14->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14));
+			this->label14->Location = System::Drawing::Point(237, 237);
+			this->label14->Name = L"label14";
+			this->label14->Size = System::Drawing::Size(0, 24);
+			this->label14->TabIndex = 29;
+			// 
+			// label15
+			// 
+			this->label15->AutoSize = true;
+			this->label15->BackColor = System::Drawing::SystemColors::AppWorkspace;
+			this->label15->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14));
+			this->label15->Location = System::Drawing::Point(32, 305);
+			this->label15->Name = L"label15";
+			this->label15->Size = System::Drawing::Size(0, 24);
+			this->label15->TabIndex = 30;
+			// 
+			// label16
+			// 
+			this->label16->AutoSize = true;
+			this->label16->BackColor = System::Drawing::SystemColors::AppWorkspace;
+			this->label16->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14));
+			this->label16->Location = System::Drawing::Point(103, 305);
+			this->label16->Name = L"label16";
+			this->label16->Size = System::Drawing::Size(0, 24);
+			this->label16->TabIndex = 31;
+			// 
+			// label17
+			// 
+			this->label17->AutoSize = true;
+			this->label17->BackColor = System::Drawing::SystemColors::AppWorkspace;
+			this->label17->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14));
+			this->label17->Location = System::Drawing::Point(174, 305);
+			this->label17->Name = L"label17";
+			this->label17->Size = System::Drawing::Size(0, 24);
+			this->label17->TabIndex = 32;
+			// 
+			// label18
+			// 
+			this->label18->AutoSize = true;
+			this->label18->BackColor = System::Drawing::SystemColors::AppWorkspace;
+			this->label18->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14));
+			this->label18->Location = System::Drawing::Point(237, 305);
+			this->label18->Name = L"label18";
+			this->label18->Size = System::Drawing::Size(0, 24);
+			this->label18->TabIndex = 33;
+			// 
 			// MyForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(292, 363);
+			this->Controls->Add(this->label18);
+			this->Controls->Add(this->label17);
+			this->Controls->Add(this->label16);
+			this->Controls->Add(this->label15);
+			this->Controls->Add(this->label14);
+			this->Controls->Add(this->label13);
+			this->Controls->Add(this->label12);
+			this->Controls->Add(this->label11);
+			this->Controls->Add(this->label10);
+			this->Controls->Add(this->label9);
+			this->Controls->Add(this->label8);
+			this->Controls->Add(this->label7);
+			this->Controls->Add(this->label6);
+			this->Controls->Add(this->label5);
+			this->Controls->Add(this->label4);
+			this->Controls->Add(this->label3);
 			this->Controls->Add(this->label2);
 			this->Controls->Add(this->label1);
 			this->Controls->Add(this->pictureBox16);
@@ -320,11 +535,35 @@ namespace Game2048 {
 
 		}
 #pragma endregion
+			
+	// Р”Р°РЅС– РіСЂРё
+	ref class Cell {
+	public:
+		int X, Y;
+		int num;
+		bool state;
+	};
 
+	private: array< Cell^, 2>^ grid = gcnew array< Cell^, 2>(SIZE, SIZE);
 
+	// Р”С–С— РіСЂРё
+
+	private: void Grid(); 
+	
+	private: void Print();
+	private: void MoveUp();
+	private: void MoveRight();
+	private: void MoveDown();
+	private: void MoveLeft();
+	private: void AddRundomNumber();
+	private: void ClearState();
+
+		   // РћР±СЂРѕР±РєР° РЅР°С‚РёСЃРєР°РЅРЅСЏ РєРЅРѕРїРѕРє
 	private: System::Void MyForm_KeyDown(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e);
 
+	// Р”С–СЏ РїРѕ РѕРЅРѕРІР»РµРЅРЅСЋ РіСЂРё
 	private: void Game_Update(Object^ sender, EventArgs^ e);
 	
 };
 }
+
