@@ -20,6 +20,7 @@ Game2048::MyForm:: MyForm() {
 
 	Grid();
 	Print();
+
 }
 
 void Game2048::MyForm::Grid(){
@@ -31,7 +32,20 @@ void Game2048::MyForm::Grid(){
 			grid[i, j]->Y = i;
 			grid[i, j]->state = false;
 			grid[i, j]->num = 0;
-
+			grid[i, j]->label = gcnew Label();
+			grid[i, j]->label->Location = Point(10 + i * 70, 105 + j * 70);
+			grid[i, j]->label->Size = System::Drawing::Size(60, 30);
+			grid[i, j]->label->Font = gcnew System::Drawing::Font("Arial", 14);
+			grid[i, j]->label->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+			grid[i, j]->label->BackColor = Color::LightGray;
+			grid[i, j]->label->BackColor = Color::LightGray;
+			grid[i, j]->label->Text = " ";
+			Controls->Add(grid[i, j]->label);
+			grid[i, j]->pictureBox = gcnew PictureBox();
+			grid[i, j]->pictureBox->Location = Point(10 + i * 70, 90 + j * 70);
+			grid[i, j]->pictureBox->Size = System::Drawing::Size(60, 60);
+			grid[i, j]->pictureBox->BackColor = Color::LightGray;
+			Controls->Add(grid[i, j]->pictureBox);
 		}
 	}
 }
@@ -59,24 +73,15 @@ void Game2048::MyForm::ClearState() {
 }
 
 void Game2048::MyForm::Print(){
-	
-	label3->Text = grid[0, 0]->num.ToString();
-	label4->Text = grid[1, 0]->num.ToString();
-	label5->Text = grid[2, 0]->num.ToString();
-	label6->Text = grid[3, 0]->num.ToString();
-	label7->Text = grid[0, 1]->num.ToString();
-	label8->Text = grid[1, 1]->num.ToString();
-	label9->Text = grid[2, 1]->num.ToString();
-	label10->Text = grid[3, 1]->num.ToString();
-	label11->Text = grid[0, 2]->num.ToString();
-	label12->Text = grid[1, 2]->num.ToString();
-	label13->Text = grid[2, 2]->num.ToString();
-	label14->Text = grid[3, 2]->num.ToString();
-	label15->Text = grid[0, 3]->num.ToString();
-	label16->Text = grid[1, 3]->num.ToString();
-	label17->Text = grid[2, 3]->num.ToString();
-	label18->Text = grid[3, 3]->num.ToString();
-
+	for (int i = 0; i < 4; i++) {
+		for (int j = 0; j < 4; j++) {
+			if (grid[i, j]->num != 0) {
+				grid[i, j]->label->Text = grid[i, j]->num.ToString();
+			} else {
+				grid[i, j]->label->Text = " ";
+			}
+		}
+	}
 }
 
 void Game2048::MyForm::MoveUp() {
@@ -180,11 +185,12 @@ void Game2048::MyForm::MoveLeft() {
 		}
 	}
 
-	AddRundomNumber();
+	AddRundomNumber(); 
 	ClearState();
 }
 
 System::Void Game2048::MyForm::MyForm_KeyDown(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e){
+	
 	
 	if (e->KeyCode == Keys::D) {
 		MoveRight();
@@ -204,11 +210,5 @@ System::Void Game2048::MyForm::MyForm_KeyDown(System::Object^ sender, System::Wi
 	}
 
 	return System::Void();
-
-}
-
-
-void Game2048::MyForm::Game_Update(Object^ sender, EventArgs^ e) {
-	
 
 }
