@@ -69,9 +69,9 @@ namespace Game2048 {
 			this->label1->Location = System::Drawing::Point(12, 31);
 			this->label1->Name = L"label1";
 			this->label1->RightToLeft = System::Windows::Forms::RightToLeft::No;
-			this->label1->Size = System::Drawing::Size(155, 25);
+			this->label1->Size = System::Drawing::Size(158, 25);
 			this->label1->TabIndex = 16;
-			this->label1->Text = L"Кількість очок: ";
+			this->label1->Text = L"Кількість очків: ";
 			// 
 			// label2
 			// 
@@ -108,6 +108,8 @@ namespace Game2048 {
 		PictureBox ^pictureBox;
 		Label ^label;
 	};
+
+	private: int score = 0;
 
 	private: array< Cell^, 2>^ grid = gcnew array< Cell^, 2>(SIZE, SIZE);
 
