@@ -9,6 +9,8 @@ void main(array<String^>^ args) {
 	Application::EnableVisualStyles();
 	Application::SetCompatibleTextRenderingDefault(false);
 
+	 srand(time(nullptr));
+
 	Game2048::MyForm form;
 	Application::Run(% form);
 	
@@ -60,7 +62,8 @@ void Game2048::MyForm::AddRundomNumber(){
 
 	} while (grid[x, y]->num != 0);
 
-	grid[x, y]->num = randint(1,2)*2;
+
+	(rand() % 10 > 8) ? grid[x, y]->num = 4: grid[x, y]->num = 2;
 
 }
 
@@ -80,6 +83,46 @@ void Game2048::MyForm::Print(){
 				grid[i, j]->label->Text = grid[i, j]->num.ToString();
 			} else {
 				grid[i, j]->label->Text = " ";
+				grid[i, j]->label->BackColor = Color::LightGray;;
+				grid[i, j]->pictureBox->BackColor = Color::LightGray;;
+			}
+
+			if (grid[i, j]->num == 2){
+				grid[i, j]->label->BackColor = Color::FromArgb(209, 183, 152);
+				grid[i, j]->pictureBox->BackColor = Color::FromArgb(209, 183, 152);
+			} else if (grid[i, j]->num == 4){
+				grid[i, j]->label->BackColor = Color::FromArgb(255, 232, 30);
+				grid[i, j]->pictureBox->BackColor = Color::FromArgb(255, 232, 30);
+			} else if (grid[i, j]->num == 8) {
+				grid[i, j]->label->BackColor = Color::FromArgb(255, 126, 0);
+				grid[i, j]->pictureBox->BackColor = Color::FromArgb(255, 126, 0);
+			} else if (grid[i, j]->num == 16) {
+				grid[i, j]->label->BackColor = Color::FromArgb(200, 50, 50);
+				grid[i, j]->pictureBox->BackColor = Color::FromArgb(200, 50, 50);
+			} else if (grid[i, j]->num == 32) {
+				grid[i, j]->label->BackColor = Color::FromArgb(68, 238, 144);
+				grid[i, j]->pictureBox->BackColor = Color::FromArgb(68, 238, 144);
+			} else if (grid[i, j]->num == 64) {
+				grid[i, j]->label->BackColor = Color::FromArgb(29, 189, 73);
+				grid[i, j]->pictureBox->BackColor = Color::FromArgb(29, 189, 73);
+			} else if (grid[i, j]->num == 128) {
+				grid[i, j]->label->BackColor = Color::FromArgb(29, 146, 189);
+				grid[i, j]->pictureBox->BackColor = Color::FromArgb(29, 146, 189);
+			} else if (grid[i, j]->num == 256) {
+				grid[i, j]->label->BackColor = Color::FromArgb(29, 61, 189);
+				grid[i, j]->pictureBox->BackColor = Color::FromArgb(29, 61, 189);
+			} else if (grid[i, j]->num == 512) {
+				grid[i, j]->label->BackColor = Color::FromArgb(118, 29, 189);
+				grid[i, j]->pictureBox->BackColor = Color::FromArgb(118, 29, 189);
+			} else if (grid[i, j]->num == 1024) {
+				grid[i, j]->label->BackColor = Color::FromArgb(89, 29, 132);
+				grid[i, j]->pictureBox->BackColor = Color::FromArgb(89, 29, 132);
+			} else if (grid[i, j]->num == 2048) {
+				grid[i, j]->label->BackColor = Color::FromArgb(145, 15, 99);
+				grid[i, j]->pictureBox->BackColor = Color::FromArgb(145, 15, 99);
+			} else if (grid[i, j]->num == 4096) {
+				grid[i, j]->label->BackColor = Color::FromArgb(101, 11, 69);
+				grid[i, j]->pictureBox->BackColor = Color::FromArgb(101, 11, 69);
 			}
 		}
 	}
@@ -94,9 +137,7 @@ void Game2048::MyForm::MoveUp() {
 		for (int j = 1; j < SIZE; j++) {
 			for (int k = j; k > 0; k--) {
 
-				if (grid[i, k]->num == 0) {
-					continue;
-				}
+				if (grid[i, k]->num == 0) { continue; }
 
 				if (grid[i, k]->num != 0 && grid[i, k - 1]->num == 0) {
 					grid[i, k - 1]->num = grid[i, k]->num;
@@ -128,9 +169,7 @@ void Game2048::MyForm::MoveRight(){
 		for (int j = SIZE - 1; j >= 0; j--) {
 			for (int k = j; k < SIZE - 1; k++) {
 
-				if (grid[k, i]->num == 0) {
-					continue;
-				}
+				if (grid[k, i]->num == 0) { continue; }
 
 				if (grid[k, i]->num != 0 && grid[k + 1, i]->num == 0) {
 					grid[k + 1, i]->num = grid[k, i]->num;
@@ -161,9 +200,7 @@ void Game2048::MyForm::MoveDown() {
 		for (int j = SIZE - 1; j >= 0; j--) {
 			for (int k = j; k < SIZE - 1; k++) {
 
-				if (grid[i, k]->num == 0) {
-					continue;
-				}
+				if (grid[i, k]->num == 0) { continue; }
 
 				if (grid[i, k]->num != 0 && grid[i, k + 1]->num == 0) {
 					grid[i, k + 1]->num = grid[i, k]->num;
@@ -195,9 +232,7 @@ void Game2048::MyForm::MoveLeft() {
 		for (int j = 1; j < SIZE; j++) {
 			for (int k = j; k > 0; k--) {
 
-				if (grid[k, i]->num == 0) {
-					continue;
-				}
+				if (grid[k, i]->num == 0) { continue; }
 
 				if (grid[k, i]->num != 0 && grid[k - 1, i]->num == 0) {
 					grid[k - 1, i]->num = grid[k, i]->num;
